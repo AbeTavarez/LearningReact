@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import SeasonDisplay from './SeasonDisplay'
 
 if (module.hot) {
   module.hot.accept();
@@ -7,7 +8,7 @@ if (module.hot) {
 
 
 class App extends Component{
-  //* OLD way
+  //*  Using constructor
   // constructor(props){
   //   super(props);
 
@@ -30,6 +31,7 @@ class App extends Component{
   }
 
   componentDidMount(){
+    console.log(`component rendered to screen`);
         // gets user location
         window.navigator.geolocation.getCurrentPosition(
           position => this.setState({lat: position.coords.latitude, lon: position.coords.longitude}),
@@ -37,26 +39,29 @@ class App extends Component{
         )
   }
 
+  componentDidUpdate(){
+    console.log(`component updated`);
+  }
+
   render(){
+    const { lat, lon, errorMsg } = this.state; 
+
     return <div>
 
       {// loading
-        !this.state.errorMsg && !this.state.lat && !this.state.lon &&
+        !errorMsg && !lat && !lon &&
         <h4>Loading...</h4>
       }
 
       {// lat and lon
-        !this.state.errorMsg && this.state.lat && this.state.lon &&
-        <div>
-          <div>Latitude:  {this.state.lat}</div>
-        <div>Longitude:  {this.state.lon}</div>
-        </div>
+        !errorMsg && lat && lon &&
+        <SeasonDisplay lat={lat} lon={lon}/>
       }
 
       <br/>
       {// Error 
-        this.state.errorMsg && !this.state.lat &&
-        <div>Error: {this.state.errorMsg}</div>
+        errorMsg && !lat &&
+        <div>Error: {errorMsg}</div>
       }
 
     </div>
