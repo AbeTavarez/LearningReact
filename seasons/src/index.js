@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import SeasonDisplay from './SeasonDisplay'
+import Spinner from "./Spinner";
 
 if (module.hot) {
   module.hot.accept();
@@ -50,7 +51,7 @@ class App extends Component{
 
       {// loading
         !errorMsg && !lat && !lon &&
-        <h4>Loading...</h4>
+        <Spinner message="Please allow location request" />
       }
 
       {// lat and lon

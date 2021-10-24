@@ -1,4 +1,7 @@
 import React from "react";
+import './SeasonDisplay.css'
+
+// @icons https://semantic-ui.com/elements/icon.html#/definition
 
 const seasonConfig = {
   summer: {
@@ -23,6 +26,7 @@ const getSeason = (lat, lon, month) => {
 };
 
 const SeasonDisplay = ({ lat, lon, errorMsg }) => {
+
   const season = getSeason(lat, lon, new Date().getMonth());
 
   // season === 'summer' || 'winter' 
@@ -31,10 +35,10 @@ const SeasonDisplay = ({ lat, lon, errorMsg }) => {
   
 
   return (
-    <div>
-      <i className={`${iconName} icon`}></i>
+    <div className={`season-display ${season}`}>
+      <i className={`icon-left massive ${iconName} icon`}></i>
       <h1>Season: {text}</h1>
-      <i className={`${iconName} icon`}></i>
+      <i className={`icon-right massive ${iconName} icon`}></i>
     </div>
   )
 };
