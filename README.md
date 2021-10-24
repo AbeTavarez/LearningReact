@@ -24,3 +24,10 @@
 
  - Other infrequently used lifecycle methods are : shouldComponentUpdate, getDerivedStateFromProps, getSnapshotBeforeUpdate.
 Read more at [React Docs]('https://reactjs.org/docs/react-component.html')
+
+
+
+
+## Links
+
+[SemanticUI]('https://semantic-ui.com/')
