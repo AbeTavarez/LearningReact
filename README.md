@@ -1,5 +1,7 @@
 # Learning React
 
+## What's React ?
+
 
 
 ## Components Lifecycle Methods
@@ -23,7 +25,7 @@
     - componentWillUmount: it's called when we want to stop showing (unmount) a component on the screen, this method is useful for doing some cleanup after our component.
 
  - Other infrequently used lifecycle methods are : shouldComponentUpdate, getDerivedStateFromProps, getSnapshotBeforeUpdate.
-Read more at [React Docs]('https://reactjs.org/docs/react-component.html')
+    - Read more at [React Docs]('https://reactjs.org/docs/react-component.html')
 
 
 
