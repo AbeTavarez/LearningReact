@@ -28,7 +28,17 @@
     - Read more at [React Docs]('https://reactjs.org/docs/react-component.html')
 
 
+## Event Handlers
+ - Ex. form and input tags.
+ - Use arrow functions, or bind the this keyword.
+ - You can pass a callback func from the parent (App) to a child (SearchBar) and the child will call that callback. That way we can pass data from child to parent.
+ - When we need to reach to the DOM we have to use REFS, since we are using JSX we need to work with REFS. (see below)
 
+## Refs
+Refs provide a way to access DOM elements or React elements created in the render method. 
+ - Create a Refs inside the constructor and then wired it to an individual element by passing it down as a ref property (ref={this.imageRef}). Later to can access the ref and get a handle on the actual DOM node.
+
+[React Refs]('https://reactjs.org/docs/refs-and-the-dom.html')
 
 ## Links
 
