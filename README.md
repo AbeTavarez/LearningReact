@@ -43,3 +43,9 @@ Refs provide a way to access DOM elements or React elements created in the rende
 ## Links
 
 [SemanticUI]('https://semantic-ui.com/')
+
+## Code Snippets
+ - Handle Input Change
+`onInputChange = (e) => {
+    this.setState({ [e.target.id]: e.target.value });
+  };`
