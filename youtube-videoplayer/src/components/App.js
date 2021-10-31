@@ -5,7 +5,8 @@ import VideoList from "./VideoList";
 
 class App extends Component {
     state = {
-        videos: [] 
+        videos: [],
+        selectedVideo: null
     }
 
     // make request to api and sets state
@@ -20,12 +21,16 @@ class App extends Component {
         this.setState({videos: res.data.items})
     }
 
+    onVideoSelect = video => {
+            this.setState({selectedVideo: video});
+    }
+
     render() {
         return (
             <div className="ui container">
   
                 <SearchBar onFormSubmit={this.onTermSubmit}/>
-                <VideoList videos={this.state.videos}/>
+                <VideoList onVideoSelect={this.onVideoSelect} videos={this.state.videos}/>
             </div>
         )
     }
