@@ -1,5 +1,5 @@
+//* API and Axios Configuration
 import axios from 'axios';
-
 const KEY ="AIzaSyAOwK5nEWN1T9nFjTD3Ykwj00NJTxEiUJk";
 
 export default axios.create({
@@ -10,4 +10,4 @@ export default axios.create({
         maxResult: 5,
         key: KEY
     }
-})
+});
