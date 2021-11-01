@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './SearchBar.css';
 
 class SearchBar extends Component {
   state = {
@@ -13,6 +14,7 @@ class SearchBar extends Component {
   onFormSubmit = e => {
     e.preventDefault();
     this.props.onFormSubmit(this.state.term)
+    e.target.value = ""
   }
 
   render() {
@@ -27,6 +29,9 @@ class SearchBar extends Component {
               value={this.state.term}
               id="term"
             />
+            <div  className="btn">
+            <input className="ui primary button" type="submit" />
+          </div>
           </div>
         </form>
       </div>
