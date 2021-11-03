@@ -1,9 +1,19 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useState} from "react";
 
 const Accordion = ({items}) => {
-    const renderItems = items.map( item => (
+    const [activeIndex, setActiveIndex] = useState(0);
+    
+    const onTitleClick = index => {
+        console.log('title clicked', index);
+    }
+
+
+    const renderItems = items.map( (item, idx) => (
         <Fragment key={item.title}>
-            <div className="title active">
+            <div 
+                className="title active"
+                onClick={() => onTitleClick(idx)}
+            >
                 <i className="dropdown icon"></i>
                 {item.title}
             </div>
