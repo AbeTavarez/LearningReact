@@ -40,6 +40,17 @@ Refs provide a way to access DOM elements or React elements created in the rende
 
 [React Refs]('https://reactjs.org/docs/refs-and-the-dom.html')
 
+## Hooks
+
+useState hook:
+ - it allows you to use state in a functional component.
+
+useEffect hook: 
+ - it allows you to use something similar to lifecycle methods.
+
+useRef hook: 
+ - it allows you ro create a ref in a function component.
+
 ## Links
 
 [SemanticUI]('https://semantic-ui.com/')
