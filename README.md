@@ -42,13 +42,33 @@ Refs provide a way to access DOM elements or React elements created in the rende
 
 ## Hooks
 
-useState hook:
+##### useState hook:
  - it allows you to use state in a functional component.
 
-useEffect hook: 
- - it allows you to use something similar to lifecycle methods.
+#### useEffect hook: 
+ - it allows you to use something like lifecycle methods. 
+   - The first parameter is a function, the second one is an optional array:
+   - `useEffect(() => {
+      console.log('Hello from use effect');
+  });`
 
-useRef hook: 
+ - We can configure useEffect to run some code automatically in one of three scenarios:
+   - When the component is rendered for the first time.
+      `useEffect(() => {
+      console.log('Runs only for the first time.');
+  }, []);`
+
+   - When the component is rendered for the first time and the component whenever it rerenders.
+       `useEffect(() => {
+      console.log('Runs for the first time and whenever the component rerenders.');
+  });`
+
+   - When the component is rendered for the first time and (whenever it rerenders and some piece of data has changed).
+      `useEffect(() => {
+      console.log('Hello from use effect');
+  }, [someVariableThatChanged]);`
+
+##### useRef hook: 
  - it allows you ro create a ref in a function component.
 
 ## Links
@@ -57,6 +77,31 @@ useRef hook:
 
 ## Code Snippets
  - Handle Input Change
+ 
 `onInputChange = (e) => {
     this.setState({ [e.target.id]: e.target.value });
   };`
+
+ - Function Component with useState
+
+ `const Search = () => {
+  const [term, setTerm] = useState("");
+  
+
+  return (
+    <div>
+      <div className="ui form">
+        <div className="field">
+          <label>Enter Search Term</label>
+          <input
+            type="text"
+            className="input"
+            value={term}
+            onChange={e => setTerm(e.target.value)}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+ `
