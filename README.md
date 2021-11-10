@@ -71,6 +71,43 @@ Refs provide a way to access DOM elements or React elements created in the rende
 ##### useRef hook: 
  - it allows you ro create a ref in a function component.
 
+
+## React Router-DOM
+Install `npm i react-router-dom`
+
+  ### Router
+
+ - Router Component: tracks the URLs and passes the information to all the other React Router components to work.
+ Router is a Provider, to give the whole app access to the Router wrap the App component in Router.
+
+ import { BrowserRouter as Router } from "react-router-dom";
+ `
+  ReactDOM.render(
+    <Router>
+      <App />
+    </Router>, document.getElementById("root)
+  )
+ `
+
+  ### Route
+  - Route Component: defines a route and will render JSX only if the URL matches the path specified.
+
+  - Three ways to write your routes:
+
+    1. JSX as child of Route Component: 
+      <Route path="/home" <Home /> />
+      Pro: Can pass props to component. Con: Doesn't receive the Router props -> history, Location, Match.
+
+    2. Using the Component Prop:
+      <Route path="/home" component={Home}>
+      Pro: Receives router props. Con: Can't pass custom props
+
+    3. Passing a Function to the Render Prop:
+       <Route path="/home" render={routerProps => <Home {...routerProps} /> } />
+       Pro: Can receive custom props and router props. 
+
+
+
 ## Links
 
 [SemanticUI]('https://semantic-ui.com/')
