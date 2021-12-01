@@ -6,7 +6,7 @@ const Search = () => {
   const [results, setResults] = useState([]); // results from search request
   // console.log(results);
 
-  //* fetch data
+  //* ===== Fetch data
   useEffect(() => {
     // first param is a function
     const search = async () => {
@@ -23,18 +23,23 @@ const Search = () => {
       setResults(data.query.search);
     };
 
-    const timeoutId = setTimeout(() => {
-      if (term) {
-        search();
-      }
-    }, 500);
+    //* ===== Initial Search
+    if (term && !results.length) {
+      search();
+    } else {
+      //* ===== Timeout
+      const timeoutId = setTimeout(() => {
+        if (term) {
+          search();
+        }
+      }, 500);
 
-
-    return () => {
-      clearTimeout(timeoutId)
+      //* ==== CleanUp Function
+      return () => {
+        clearTimeout(timeoutId);
+      };
     }
   }, [term]);
-
 
   //* ========= Create List of data
   const renderedResults = results.map((result) => {
@@ -44,18 +49,18 @@ const Search = () => {
           <a
             className="ui button"
             href={`https://en.wikipedia.org?curid=${result.pageid}`}
-            >Go</a>
-            
+          >
+            Go
+          </a>
         </div>
         <div className="content">
           <div className="header">{result.title}</div>
-          <span dangerouslySetInnerHTML={{ __html: result.snippet}}></span>
+          <span dangerouslySetInnerHTML={{ __html: result.snippet }}></span>
           {/* {result.snippet} */}
         </div>
       </div>
     );
   });
-
 
   return (
     <div>
