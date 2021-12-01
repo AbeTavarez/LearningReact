@@ -7,10 +7,13 @@ const Search = () => {
   const [results, setResults] = useState([]); // results from search request
   // console.log(results);
 
-
+  //* Runs every time term changes
+  // term change every time user types
   useEffect(() => {
+    // we queue up a change to debouncedTerm
+    // every time we run this useEffect
     const timerId = setTimeout(() => {
-      setDebouncedTerm(term);
+      setDebouncedTerm(term); // this change will trigger the other useEffect 
     }, 1000);
 
     return () => {
@@ -18,9 +21,8 @@ const Search = () => {
     }
   }, [term]);
 
-  //* ===== Fetch data
+  //* Makes the request with the debounced term
   useEffect(() => {
-    // first param is a function
     const search = async () => {
       const { data } = await axios.get(`https://en.wikipedia.org/w/api.php`, {
         params: {
@@ -34,24 +36,46 @@ const Search = () => {
       //* set data to state
       setResults(data.query.search);
     };
+    search();
+  }, [debouncedTerm]);
 
-    //* ===== Initial Search
-    if (term && !results.length) {
-      search();
-    } else {
-      //* ===== Timeout
-      const timeoutId = setTimeout(() => {
-        if (term) {
-          search();
-        }
-      }, 500);
+  //* ===== Fetch data | First Approach
+  // useEffect(() => {
+  //   // first param is a function
+  //   const search = async () => {
+  //     const { data } = await axios.get(`https://en.wikipedia.org/w/api.php`, {
+  //       params: {
+  //         action: "query",
+  //         list: "search",
+  //         origin: "*",
+  //         format: "json",
+  //         srsearch: debouncedTerm,
+  //       },
+  //     });
+  //     //* set data to state
+  //     setResults(data.query.search);
+  //   };
 
-      //* ==== CleanUp Function
-      return () => {
-        clearTimeout(timeoutId);
-      };
-    }
-  }, [term, results.length]);
+  //   //* ===== Initial Search
+  //   if (term && !results.length) {
+  //     search();
+  //   } else {
+  //     //* ===== Timeout
+  //     const timeoutId = setTimeout(() => {
+  //       if (term) {
+  //         search();
+  //       }
+  //     }, 500);
+
+  //     //* ==== CleanUp Function
+  //     return () => {
+  //       clearTimeout(timeoutId);
+  //     };
+  //   }
+  // }, [term, results.length]);
+
+
+
 
   //* ========= Create List of data
   const renderedResults = results.map((result) => {
