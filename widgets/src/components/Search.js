@@ -3,8 +3,20 @@ import axios from "axios";
 
 const Search = () => {
   const [term, setTerm] = useState("programming"); // term to search
+  const [debouncedTerm, setDebouncedTerm] = useState(term);
   const [results, setResults] = useState([]); // results from search request
   // console.log(results);
+
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setDebouncedTerm(term);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timerId);
+    }
+  }, [term]);
 
   //* ===== Fetch data
   useEffect(() => {
@@ -39,7 +51,7 @@ const Search = () => {
         clearTimeout(timeoutId);
       };
     }
-  }, [term]);
+  }, [term, results.length]);
 
   //* ========= Create List of data
   const renderedResults = results.map((result) => {
