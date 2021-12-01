@@ -4,7 +4,7 @@ import axios from "axios";
 const Search = () => {
   const [term, setTerm] = useState("programming"); // term to search
   const [results, setResults] = useState([]); // results from search request
-  console.log(results);
+  // console.log(results);
 
   //* fetch data
   useEffect(() => {
@@ -23,8 +23,15 @@ const Search = () => {
       setResults(data.query.search);
     };
 
-    if (term) {
-      search();
+    const timeoutId = setTimeout(() => {
+      if (term) {
+        search();
+      }
+    }, 500);
+
+
+    return () => {
+      clearTimeout(timeoutId)
     }
   }, [term]);
 
