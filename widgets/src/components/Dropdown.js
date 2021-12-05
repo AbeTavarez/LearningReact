@@ -1,13 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 const Dropdown = ({ options, selected, onSelectedChange }) => {
   const [open, setOpen] = useState(false);
+  const ref = useRef();
 
-  // Data
+  useEffect(() => {
+    const onBodyClick = (e) => {
+      // console.log(e.target);
+      // The contains() method returns a Boolean value indicating whether a node is a descendant of a specified node.
+      if (ref.current.contains(e.target)) {
+          return  // if it's contained inside this element we return early 
+      }
+      setOpen(false);
+    };
+
+    document.body.addEventListener("click", onBodyClick,
+    { capture: true });
+
+    //* ==== CleanUp function
+    return () => {
+      document.removeEventListener('click', onBodyClick)
+    }
+  }, []);
+
+  // Menu Options
   const renderedOptions = options.map((option) => {
     if (option.value === selected.value) {
       return null;
-    };
+    }
     return (
       <div
         key={option.value}
@@ -21,7 +41,7 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
 
 
   return (
-    <div className="ui form">
+    <div ref={ref} className="ui form">
       <div className="field">
         <label className="label">Select a color</label>
         <div
