@@ -1,7 +1,7 @@
 # Learning React
 
 ## What's React ?
-
+React is a JavaScript library...
 
 
 ## Components Lifecycle Methods
@@ -69,7 +69,42 @@ Refs provide a way to access DOM elements or React elements created in the rende
   }, [someVariableThatChanged]);`
 
 ##### useRef hook: 
- - it allows you ro create a ref in a function component.
+
+ - It allows you to create a reference some other element in a function component.
+ - A ref allows a component to listen to an event on a different component. Ex. Check Widgets/Dropdown: 
+
+ `
+ useEffect(() => {
+    document.body.addEventListener("click", (e) => {
+        // The contains() method returns a Boolean value indicating whether a node is a descendant of a specified node.
+        if (ref.current.contains(e.target)) {
+            return // if it's contained we return early 
+        }
+        setOpen(false);
+      },
+      { capture: true }
+    );
+  }, []);
+
+  return (
+    <div ref={ref} className="ui form">
+      <div className="field">
+        <label className="label">Select a color</label>
+        <div
+          onClick={() => setOpen(!open)}
+          className={`ui selection dropdowm ${open ? "visible active" : ""}`}
+        >
+          <i className="dropdowm icon"></i>
+          <div className="text">{selected.label}</div>
+          <div className={`menu ${open ? "visible transition" : ""}`}>
+            {renderedOptions}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+ `
 
 
 ## React Router-DOM
