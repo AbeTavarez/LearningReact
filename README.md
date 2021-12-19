@@ -68,6 +68,19 @@ Refs provide a way to access DOM elements or React elements created in the rende
       console.log('Hello from use effect');
   }, [someVariableThatChanged]);`
 
+  - UseEffect Clean UP function: this function it's call right before the next time useEffect runs again or when we're about to stop showing a component on the screen. 
+    - See Search.js and Dropdown.js in the Widgets project.
+
+  `useEffect(() => {
+    const timerId = setTimeout(() => { 
+    }, 1000);
+    // useEffect Clean Up function
+    return () => {
+      clearTimeout(timerId);
+    }
+  }, [term]);
+  `
+
 ##### useRef hook: 
 
  - It allows you to create a reference some other element in a function component.
@@ -143,11 +156,11 @@ Install `npm i react-router-dom`
 
 
 
-## Links
+### Links
 
 [SemanticUI]('https://semantic-ui.com/')
 
-## Code Snippets
+### Code Snippets
  - Handle Input Change
  
 `onInputChange = (e) => {
@@ -177,3 +190,19 @@ Install `npm i react-router-dom`
   );
 };
  `
+
+
+
+## Adding Redux to Our React App
+
+
+### Code Snippets
+
+
+`
+// Async Action Creator
+export const fetchPosts = () => async dispatch => {
+        const res = await jsonPlaceholder.get('/posts');
+        dispatch({type: 'FETCH_POSTS', payload: res});
+};
+`
