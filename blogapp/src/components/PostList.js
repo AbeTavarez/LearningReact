@@ -1,11 +1,16 @@
-import React, {Component} from 'react';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { fetchPosts, } from "../actions";
 
-class PostList extends Component {
-    render() {
-        return(
-            <h1>PostList</h1>
-        )
-    }
+const PostList = ({ fetchPosts}) => {
+  useEffect(() => {
+    fetchPosts();
+  });
+  return (
+    <div>
+      <h1>PostList</h1>
+    </div>
+  );
 };
 
-export default PostList;
+export default connect(null, { fetchPosts })(PostList);
