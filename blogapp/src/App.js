@@ -1,10 +1,11 @@
-import logo from './logo.svg';
+import PostList from "./components/PostList";
 
-
-function App() {
+const App = () => {
   return (
     <div className="ui container">
       <h1>BlogApp</h1>
+      <hr />
+      <PostList />
     </div>
   );
 }
