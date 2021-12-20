@@ -6,10 +6,22 @@ const PostList = ({ fetchPosts, posts}) => {
   useEffect(() => {
     fetchPosts();
   }, []);
-  console.log(posts);
+  
+  const postsList = posts.map(post => {
+    <div className="item" key={post.id}>
+      <i className="large middle aligned icon user" />
+      <div className="content">
+        <div className="description">
+          <h2>{post.title}</h2>
+          <p>{post.body}</p>
+        </div>
+      </div>
+    </div>
+  });
   return (
-    <div>
+    <div className="ui relaxed divided list">
       <h1>PostList</h1>
+      {postsList}
     </div>
   );
 };
