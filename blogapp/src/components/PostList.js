@@ -7,7 +7,7 @@ const PostList = ({ fetchPosts, posts}) => {
     fetchPosts();
   }, []);
   
-  const postsList = posts.map(post => {
+  const postsList = posts.map(post => (
     <div className="item" key={post.id}>
       <i className="large middle aligned icon user" />
       <div className="content">
@@ -17,7 +17,8 @@ const PostList = ({ fetchPosts, posts}) => {
         </div>
       </div>
     </div>
-  });
+  ));
+
   return (
     <div className="ui relaxed divided list">
       <h1>PostList</h1>
