@@ -5,8 +5,8 @@ import { fetchUser } from "../actions";
 const UserHeader = ({ userId, user}) => {
   useEffect(() => {
     fetchUser(userId); // calling the action
-  },[]);
-  console.dir(user);
+  }, []);
+  
   if (!user) {
       return <h3>User not found</h3>;
   }
