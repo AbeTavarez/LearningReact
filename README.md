@@ -39,11 +39,15 @@ The Virtual DOM works in three simple steps.
   1- Whenever any underlying data changes, the entire UI is re-rendered in Virtual DOM representation.
   
 
-  ![vdom](https://drive.google.com/file/d/1v__YoC80newdzAwBz26NHl1q2zMUr7tG/view?usp=sharing)
+  ![vdom](https://abe-assets-cloud.s3.us-east-2.amazonaws.com/vdom1.png)
 
   2- Then the difference between the previous DOM representation and the new one is calculated.
 
+  ![vdom](https://abe-assets-cloud.s3.us-east-2.amazonaws.com/vdom2.png)
+
   3- Once the calculations are done, the real DOM will be updated with only the things that have actually changed.
+
+  ![vdom](https://abe-assets-cloud.s3.us-east-2.amazonaws.com/vdom3.png)
 
 ## Create our first React App !
 
