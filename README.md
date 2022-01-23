@@ -68,11 +68,7 @@ function App() {
 
     { loading ? <h3>Loading...<h3> : <h2>{sayHello()}</h2> } 
 
-    {loading ? (
-       <h4>Loading...</h4>
-     ) : (
-       <h4>Hello {nextStep ? <button>next</button>: null}</h4>
-     )}
+    { loading ? <h4>Loading...</h4> : <h4>Hello {admin && name}</h4> }
     </div>
   );
 }
