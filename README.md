@@ -1,8 +1,95 @@
 # Learning React
 
 ## What's React ?
-React is a JavaScript library...
 
+  - React is a JavaScript library for building user interfaces especially for single page application (SPA).
+  - React is an open source project created and maintained by Facebook.
+  - React is used to build dynamic user interfaces.
+
+## Why use React ?
+
+  - React can be use in the browser and in the server server.
+  - You can build very powerful frontend applications using React.
+  - You can implement `Routing` in the frontend and update certain parts of the UI making the application very dynamic.
+  - React is Component based. We can reused components in the same or in different applications.
+  - Code Organization. Code is organized in components rather than separated files.
+  - React makes manipulating the DOM much easier.
+  - React is very light and fast.
+  - React is the most famous frontend library.
+
+#### From Reactjs.org:
+
+  - Declarative: React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes. Declarative views make your code more predictable, simpler to understand, and easier to debug.
+
+  - Component-Based: Build encapsulated components that manage their own state, then compose them to make complex UIs. Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.
+
+  - Learn Once, Write Anywhere: We don't make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code. React can also render on the server using Node and power mobile apps using React Native.
+
+## What is the Virtual DOM (VDOM) ?
+
+  - The Virtual DOM (VDOM) is an in-memory representation of Real DOM. 
+  - It is lightweight JavaScript object which is copy of Real DOM.
+  - The representation of a UI is kept in memory and synced with the "real" DOM.
+  - Manipulating the DOM is slow. Manipulating the virtual DOM is much faster.
+
+## How the Virtual DOM works ?
+
+The Virtual DOM works in three simple steps.
+
+  1- Whenever any underlying data changes, the entire UI is re-rendered in Virtual DOM representation.
+
+  2- Then the difference between the previous DOM representation and the new one is calculated.
+
+  3- Once the calculations are done, the real DOM will be updated with only the things that have actually changed.
+
+
+## What is a component ?
+
+  - In it's most basic definition, a Component is a React class or function that returns some HTML or (JSX).
+  - Components allow you to create individual elements of a page.
+  - Components can have their own logic, style, props and state.
+
+## What is JSX ?
+
+JSX is a XML-like syntax extension to ECMAScript (the acronym stands for JavaScript XML). Basically it just provides syntactic sugar for the React.createElement() function, giving us expressiveness of JavaScript along with HTML like template syntax.
+
+## Expressions and Conditionals in JSX
+ - We can use any JavaScript expression inside {} curly brackets.
+ - We can use regular if statements or ternary expression to show different data.
+`
+function App() {
+  const name = 'React'; //variable
+  const sayHello = () => 'Hello World!'; // function
+  const loading = true; // Boolean
+  const nextStep = true; // Boolean
+  return (
+    <div className="App">
+     <h1>Hello { name }</h1>
+
+    { loading ? <h3>Loading...<h3> : <h2>{sayHello()}</h2> } 
+
+    {loading ? (
+       <h4>Loading...</h4>
+     ) : (
+       <h4>Hello {nextStep ? <button>next</button>: null}</h4>
+     )}
+    </div>
+  );
+}
+`
+
+
+
+## Required Tools:
+  - Nodejs
+  - React Developer Tools
+  - VS Code
+  - Git
+  - Recommended extensions:
+    - Live Server
+    - Bracket Pair Colorizer 2
+    - Auto Rename Tag
+    - Prettier-Code Formatter (format code on save)
 
 ## Components Lifecycle Methods
 
@@ -193,8 +280,81 @@ Install `npm i react-router-dom`
 
 
 
-## Adding Redux to Our React App
+### React-Redux
 
+#### Actions
+
+
+### Rules of Reducers
+
+- Reducers must return some value, besides "undefined".
+- Reducers produce "state", or data to be used inside of your app using only previous state and the action (reducers are pure).
+- Must not return reach out of its function or "its self" to decide what value to return.
+- Must not directly mutate its input "state" argument. (We return a new "state to let React knows that we have updated our state and we should re-render")
+
+### Working with State inside Reducers.
+
+- Removing an element from an array.
+  - Bad
+  `
+    state.pop();
+  `
+  - Good
+  `
+    state.filter(post => post !== postToRemove);
+  `
+
+- Adding an element to an array.
+  - Bad
+  `
+    state.push(newPost);
+  `
+  - Good
+  `
+    [...state, newPost];
+  `
+
+- Replacing an element in an array.
+ - Bad
+ `
+  state[0] = newPost
+`
+
+- Good
+`
+  state.map(post => post === postToReplace ? newPost: post);
+`  
+---------------------------
+- Removing an property from an object.
+  - Bad
+  `
+    delete state[user].age
+  `
+  - Good
+  `
+    {state[user], state[user].name: undefined}
+  `
+
+- Adding an property to an object.
+  - Bad
+  `
+    state[user].location = newLocation;
+  `
+  - Good
+  `
+    {...state[user], location: newLocation}
+  `
+
+- Replacing an property from an object.
+ - Bad
+ `
+  state[user].name = newName;
+`
+- Good
+`
+  //  Evaluated from left to right
+  {...state[user], name: newName}; current name property will be overwritten with newName
+`  
 
 ### Code Snippets
 
@@ -205,4 +365,30 @@ export const fetchPosts = () => async dispatch => {
         const res = await jsonPlaceholder.get('/posts');
         dispatch({type: 'FETCH_POSTS', payload: res});
 };
+`
+
+#### Redux Dev Tools
+`
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+ 
+import App from './components/App';
+import reducers from './reducers';
+ 
+// change your store and Provider setup to look like this:
+ 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({trace:true});
+const store = createStore(reducers, /* preloadedState, */ composeEnhancers(
+    applyMiddleware(thunk)
+));
+ 
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.querySelector('#root')
+);
 `
