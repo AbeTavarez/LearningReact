@@ -39,7 +39,7 @@ The Virtual DOM works in three simple steps.
   1- Whenever any underlying data changes, the entire UI is re-rendered in Virtual DOM representation.
   
 
-  ![vdom](https://www.foxinfotech.in/wp-content/uploads/2019/12/Happy-Christmas.png)
+  ![vdom](https://drive.google.com/file/d/1v__YoC80newdzAwBz26NHl1q2zMUr7tG/view?usp=sharing)
 
   2- Then the difference between the previous DOM representation and the new one is calculated.
 
