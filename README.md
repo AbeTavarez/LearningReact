@@ -68,10 +68,10 @@ The Virtual DOM works in three simple steps.
 JSX is a XML-like syntax extension to ECMAScript (the acronym stands for JavaScript XML). Basically it just provides syntactic sugar for the React.createElement() function, giving us expressiveness of JavaScript along with HTML like template syntax.
 
 ## Expressions and Conditionals in JSX
- - We can use any JavaScript expression inside {} curly brackets.
+ - We can use any JavaScript expression inside { } curly brackets.
  - We can use regular if statements or ternary expression to show different data.
 
-`function App() {
+```function App() {
   const name = 'React'; //variable
   const sayHello = () => 'Hello World!'; // function
   const loading = true; // Boolean
@@ -83,7 +83,7 @@ JSX is a XML-like syntax extension to ECMAScript (the acronym stands for JavaScr
     { loading ? <h4>Loading...</h4> : <h4>Hello {admin && name}</h4> }
     </div>
   );
-}`
+}```
 
 
 
