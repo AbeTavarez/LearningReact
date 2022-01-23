@@ -71,7 +71,7 @@ JSX is a XML-like syntax extension to ECMAScript (the acronym stands for JavaScr
  - We can use any JavaScript expression inside {} curly brackets.
  - We can use regular if statements or ternary expression to show different data.
 
-function App() {
+`function App() {
   const name = 'React'; //variable
   const sayHello = () => 'Hello World!'; // function
   const loading = true; // Boolean
@@ -79,13 +79,11 @@ function App() {
   return (
     <div className="App">
      <h1>Hello { name }</h1>
-
     { loading ? <h3>Loading...<h3> : <h2>{sayHello()}</h2> } 
-
     { loading ? <h4>Loading...</h4> : <h4>Hello {admin && name}</h4> }
     </div>
   );
-}
+}`
 
 
 
