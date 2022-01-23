@@ -83,7 +83,8 @@ JSX is a XML-like syntax extension to ECMAScript (the acronym stands for JavaScr
     { loading ? <h4>Loading...</h4> : <h4>Hello {admin && name}</h4> }
     </div>
   );
-}```
+}
+```
 
 
 
