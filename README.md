@@ -49,9 +49,24 @@ The Virtual DOM works in three simple steps.
 
   ![vdom](https://abe-assets-cloud.s3.us-east-2.amazonaws.com/vdom3.png)
 
+
+## Required Tools:
+
+Make use you have all these free tools installed:
+
+  - Nodejs, comes with npm
+  - React Developer Tools
+  - VS Code
+  - Git
+  - Recommended extensions:
+    - Live Server
+    - Bracket Pair Colorizer 2
+    - Auto Rename Tag
+    - Prettier-Code Formatter (format code on save)
+
 ## Create our first React App !
 
- - Let's install Create React App
+ - Let's install Create React App using npm
   `npm install -g create-react-app`
 
 - Let's create the app
@@ -59,9 +74,23 @@ The Virtual DOM works in three simple steps.
 
 ## What is a component ?
 
-  - In it's most basic definition, a Component is a React class or function that returns some HTML or (JSX).
+  - In its most basic definition, a Component is a React class or function that returns some HTML or (JSX).
   - Components allow you to create individual elements of a page.
   - Components can have their own logic, style, props and state.
+
+## CommonJS Modules and ES6 Modules
+
+ - CommonJS  Modules were created by NodeJS before JavaScript had their own module system.
+ 
+ `const MyModule = require('./MyModule.js');`
+ `module.exports = MyModule;`
+
+- ES6 introduced JavaScript own module system.
+
+`import MyModule from './MyModule.js';`
+`export default MyModule;` // exports a single value
+`export { component1, component2 };`
+
 
 ## What is JSX ?
 
@@ -85,20 +114,6 @@ JSX is a XML-like syntax extension to ECMAScript (the acronym stands for JavaScr
   );
 }
 ```
-
-
-
-
-## Required Tools:
-  - Nodejs
-  - React Developer Tools
-  - VS Code
-  - Git
-  - Recommended extensions:
-    - Live Server
-    - Bracket Pair Colorizer 2
-    - Auto Rename Tag
-    - Prettier-Code Formatter (format code on save)
 
 ## Components Lifecycle Methods
 
@@ -401,3 +416,12 @@ ReactDOM.render(
     document.querySelector('#root')
 );
 `
+
+
+### Resources
+
+Interview Questions:
+https://github.com/sudheerj/reactjs-interview-questions#what-is-jsx
+
+Github Markdown:
+https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
