@@ -37,11 +37,21 @@
 The Virtual DOM works in three simple steps.
 
   1- Whenever any underlying data changes, the entire UI is re-rendered in Virtual DOM representation.
+  
+
+  [alt text]("https://drive.google.com/file/d/1v__YoC80newdzAwBz26NHl1q2zMUr7tG/view?usp=sharing"Logo Title Text 1")
 
   2- Then the difference between the previous DOM representation and the new one is calculated.
 
   3- Once the calculations are done, the real DOM will be updated with only the things that have actually changed.
 
+## Create our first React App !
+
+ - Let's install Create React App
+  `npm install -g create-react-app`
+
+- Let's create the app
+  `create-react-app myfirstapp`
 
 ## What is a component ?
 
@@ -56,6 +66,7 @@ JSX is a XML-like syntax extension to ECMAScript (the acronym stands for JavaScr
 ## Expressions and Conditionals in JSX
  - We can use any JavaScript expression inside {} curly brackets.
  - We can use regular if statements or ternary expression to show different data.
+
 `
 function App() {
   const name = 'React'; //variable
