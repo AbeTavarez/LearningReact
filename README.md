@@ -1,23 +1,34 @@
 # Learning React
 
-## What's React ?
+## Section 1
+
+### What's React ?
 
   - React is a JavaScript library for building user interfaces especially for single page application (SPA).
+
   - React is an open source project created and maintained by Facebook.
+
   - React is used to build dynamic user interfaces.
 
-## Why use React ?
+### Why use React ?
 
   - React can be use in the browser and in the server server.
+
   - You can build very powerful frontend applications using React.
+
   - You can implement `Routing` in the frontend and update certain parts of the UI making the application very dynamic.
+
   - React is Component based. We can reused components in the same or in different applications.
+
   - Code Organization. Code is organized in components rather than separated files.
+
   - React makes manipulating the DOM much easier.
+
   - React is very light and fast.
+
   - React is the most famous frontend library.
 
-#### From Reactjs.org:
+##### From Reactjs.org:
 
   - Declarative: React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes. Declarative views make your code more predictable, simpler to understand, and easier to debug.
 
@@ -25,14 +36,17 @@
 
   - Learn Once, Write Anywhere: We don't make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code. React can also render on the server using Node and power mobile apps using React Native.
 
-## What is the Virtual DOM (VDOM) ?
+### What is the Virtual DOM (VDOM) ?
 
-  - The Virtual DOM (VDOM) is an in-memory representation of Real DOM. 
+  - The Virtual DOM (VDOM) is an in-memory representation of Real DOM.
+
   - It is lightweight JavaScript object which is copy of Real DOM.
+
   - The representation of a UI is kept in memory and synced with the "real" DOM.
+
   - Manipulating the DOM is slow. Manipulating the virtual DOM is much faster.
 
-## How the Virtual DOM works ?
+### How the Virtual DOM works ?
 
 The Virtual DOM works in three simple steps.
 
@@ -50,7 +64,7 @@ The Virtual DOM works in three simple steps.
   ![vdom](https://abe-assets-cloud.s3.us-east-2.amazonaws.com/vdom3.png)
 
 
-## Required Tools:
+### Required Tools:
 
 Make use you have all these free tools installed:
 
@@ -58,13 +72,14 @@ Make use you have all these free tools installed:
   - React Developer Tools
   - VS Code
   - Git
+
   - Recommended extensions:
     - Live Server
     - Bracket Pair Colorizer 2
     - Auto Rename Tag
     - Prettier-Code Formatter (format code on save)
 
-## Create our first React App !
+### Create our first React App !
 
  - Let's install Create React App using npm
   `npm install -g create-react-app`
@@ -72,13 +87,7 @@ Make use you have all these free tools installed:
 - Let's create the app
   `create-react-app myfirstapp`
 
-## What is a component ?
-
-  - In its most basic definition, a Component is a React class or function that returns some HTML or (JSX).
-  - Components allow you to create individual elements of a page.
-  - Components can have their own logic, style, props and state.
-
-## CommonJS Modules and ES6 Modules
+### CommonJS Modules and ES6 Modules
 
  - CommonJS  Modules were created by NodeJS before JavaScript had their own module system.
  
@@ -91,13 +100,49 @@ Make use you have all these free tools installed:
 `export default MyModule;` // exports a single value
 `export { component1, component2 };`
 
+### What is a component ?
 
-## What is JSX ?
+  - In its most basic definition, a Component is a React class or function that returns some HTML or (JSX).
 
-JSX is a XML-like syntax extension to ECMAScript (the acronym stands for JavaScript XML). Basically it just provides syntactic sugar for the React.createElement() function, giving us expressiveness of JavaScript along with HTML like template syntax.
+  - Components allow you to create individual elements of a page.
 
-## Expressions and Conditionals in JSX
+  - Components can have their own logic, style, props and state.
+
+  - Components can be nested inside of another.
+
+  - We want to create Components that can be easily reused.
+
+  - Components can be configure e.g. by using the props system.
+
+
+### What is JSX ?
+
+ - JSX is a XML-like syntax extension to ECMAScript (the acronym stands for JavaScript XML).
+
+ - Basically it just provides syntactic sugar for the React.createElement() function, giving us expressiveness of JavaScript along with HTML like template syntax.
+ 
+
+### JSX vs HTML
+
+ - JSX use different syntax for adding styling to a component.
+
+ - Instead of `class='container'`, JSX uses `className='container'`
+
+ - JSX inline styling:
+    `<div> style={{ backgroundColor: 'blue' }}> </div>`
+
+ - For any JSX property use double quotes: 
+    `<input id="name" type="text"/>`
+
+ - JSX can reference JavaScript variables:
+    `const myVariable = 'Click me!'`
+    `<button>{myVariable}</button>`
+
+ - Entire objects are NOT valid as a React child.
+
+### Expressions and Conditionals in JSX
  - We can use any JavaScript expression inside { } curly brackets.
+
  - We can use regular if statements or ternary expression to show different data.
 
 ```function App() {
@@ -115,7 +160,36 @@ JSX is a XML-like syntax extension to ECMAScript (the acronym stands for JavaScr
 }
 ```
 
-## Components Lifecycle Methods
+## Section 2
+
+### React Props System
+
+ - `props` is short for `properties`.
+
+ - The `props` system, is a system for passing data from a parent component to a child or nested component.
+
+ - The goal of the `props` system is to customize or configure a child component.
+
+
+### React State System
+
+`
+class Useritem extends Component {
+  // constructor fires off when the component loads.
+  constructor() {
+    super(); // we need to call super in order to all the parent class constructor
+
+    this.state = {
+      id: "id",
+      login: "mojombo",
+      avatar_url: "https://avatars.githubusercontent.com/u/1?v=4",
+      html_url: "https://github.com/mojombo",
+    };
+  }
+  render()....
+`
+
+### Components Lifecycle Methods
 
  - A component lifecycle is a function that we can define in our component class.
 
@@ -141,8 +215,11 @@ JSX is a XML-like syntax extension to ECMAScript (the acronym stands for JavaScr
 
 ## Event Handlers
  - Ex. form and input tags.
+
  - Use arrow functions, or bind the this keyword.
+
  - You can pass a callback func from the parent (App) to a child (SearchBar) and the child will call that callback. That way we can pass data from child to parent.
+
  - When we need to reach to the DOM we have to use REFS, since we are using JSX we need to work with REFS. (see below)
 
 ## Refs
