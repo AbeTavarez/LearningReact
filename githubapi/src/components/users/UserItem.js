@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
 const Useritem = (props) => {
   const { login, avatar_url, html_url } = props.user;
@@ -15,9 +16,9 @@ const Useritem = (props) => {
       <h3>{login}</h3>
 
       <div>
-        <a href={html_url} className="btn btn-dark btn-sm my-1">
+        <Link to={`/user/${login}`} className="btn btn-dark btn-sm my-1">
           more
-        </a>
+        </Link>
       </div>
     </div>
   );
@@ -25,7 +26,7 @@ const Useritem = (props) => {
 
 Useritem.propTypes = {
     user: PropTypes.object.isRequired,
-    
+
 }
 
 export default Useritem;
