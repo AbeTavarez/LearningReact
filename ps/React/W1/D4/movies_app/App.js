@@ -1,5 +1,3 @@
-// import MovieInfo from "./MoveInfo";
-
 class App  extends React.Component {
     // http://www.omdbapi.com/?i=tt3896198&apikey=d9040479
     state = {
@@ -7,7 +5,8 @@ class App  extends React.Component {
         apiKey: 'apikey=d9040479',
         query: '&t=',
         movieTitle: '',
-        searchURL: ''
+        searchURL: '',
+        movie: null
     }
     handleChange = e => {
         this.setState({ [e.target.name]: e.target.value});
@@ -39,8 +38,8 @@ class App  extends React.Component {
                  <input type='text' name='movieTitle' onChange={this.handleChange} value={this.state.movieTitle} />
                  <input type='submit' value='Search Movie'/>
              </form>
-             {/* <a href={this.state.searchURL}>{this.state.searchURL}</a> */}
-            {this.state.movie ?  <MovieInfo movie={this.state.movie}/> : null}
+             <a href={this.state.searchURL}>{this.state.searchURL}</a>
+            {this.state.movie ?  <MovieInfo movie={this.state.movie}/> : ''}
            </div>
         )
     }
