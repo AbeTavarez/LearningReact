@@ -1,37 +1,31 @@
-import { Component } from "react";
+import { useState } from 'react'
 import PropTypes from 'prop-types';
 
-class Search extends Component {
-  state = {
-    searchText: "",
+const Search = ({ searchUsers, showClear, clearUsers, setAlert}) => {
+  const [searchText, setSearchText ] = useState('')
 
-  };
-
-  handleChange = (e) => this.setState({[e.target.name]: e.target.value});
+  const handleChange = (e) => setSearchText(e.target.value);
     
-  handleSubmit = e => {
+  const handleSubmit = e => {
       e.preventDefault();
-      if (this.state.searchText === ''){
-          this.props.setAlert('Please enter a name', 'light')
+      if (searchText === ''){
+          setAlert('Please enter a name', 'light')
       } else {
         //   console.log(this.state.searchText);
-        this.props.searchUsers(this.state.searchText);
-        this.setState({searchText: ""});
+        searchUsers(searchText);
+        setSearchText('')
       }
   };
   
-  render() {
-      const { clearUsers, showClear } = this.props;
-
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <input
             type="text"
             name="searchText"
             placeholder="Search Users..."
-            value={this.state.searchText}
-            onChange={this.handleChange}
+            value={searchText}
+            onChange={handleChange}
           />
          
           <input
@@ -46,7 +40,7 @@ class Search extends Component {
        )}
       </div>
     );
-  }
+  
 }
 
 Search.propTypes = {
