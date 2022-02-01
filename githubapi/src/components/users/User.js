@@ -1,31 +1,34 @@
-import { Component } from "react";
+import { useEffect } from "react";
 import Repos from "../repos/Repos";
 import Spinner from "../layout/Spinner";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-class User extends Component {
-  componentDidMount() {
-    this.props.getUser(this.props.match.params.login);
-    this.props.getUserRepos(this.props.match.params.login);
-  }
-  render() {
-    const {
-      name,
-      company,
-      avatar_url,
-      location,
-      bio,
-      blog,
-      login,
-      html_url,
-      followers,
-      following,
-      public_repos,
-      public_gists,
-      hireable,
-    } = this.props.user;
-    const { loading, repos } = this.props;
+const User = ({user, loading, repos, getUser, getUserRepos, match}) => {
+  useEffect(() => {
+    getUser(match.params.login);
+    getUserRepos(match.params.login);
+  }, [])
+  // componentDidMount() {
+  //   getUser(match.params.login);
+  //   getUserRepos(match.params.login);
+  // }
+  const {
+    name,
+    company,
+    avatar_url,
+    location,
+    bio,
+    blog,
+    login,
+    html_url,
+    followers,
+    following,
+    public_repos,
+    public_gists,
+    hireable
+  } = user;
+  
 
     if (loading) return <Spinner />;
 
@@ -82,7 +85,7 @@ class User extends Component {
         <Repos repos={repos}/>
       </>
     );
-  }
+  
 }
 
 User.propTypes = {

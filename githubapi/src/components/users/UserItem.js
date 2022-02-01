@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 
-const Useritem = (props) => {
+const UserItem = (props) => {
   const { login, avatar_url, html_url } = props.user;
 
   return (
@@ -24,9 +24,9 @@ const Useritem = (props) => {
   );
 };
 
-Useritem.propTypes = {
+UserItem.propTypes = {
     user: PropTypes.object.isRequired,
 
 }
 
-export default Useritem;
+export default UserItem;
