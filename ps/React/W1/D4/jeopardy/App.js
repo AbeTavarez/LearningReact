@@ -16,6 +16,8 @@ class App extends React.Component {
       <div>
         <h1>Welcome To React Jeopardy!</h1>
 
+        <Score question={this.state.question}/>
+        <hr />
         <button onClick={this.handleGetQuestion}>Get Question</button>
 
         <Question question={this.state.question} />
@@ -51,6 +53,33 @@ class Question extends React.Component {
       </div>
     );
   }
+}
+
+
+class Score extends React.Component {
+    state = {
+        score: 0
+    }
+
+    handleIncreaseScore = () => {
+        this.setState({score: this.state.score + this.props.question[0].value })
+    }
+    handleDecreaseScore = () => {
+        this.setState({score: this.state.score - this.props.question[0].value})
+    }
+    handleResetScore = () => {
+        this.setState({score: 0})
+    }
+    render() {
+        return(
+            <div>
+                <h1>Score: {this.state.score}</h1>
+                <button onClick={this.handleDecreaseScore}>Decrease</button>
+                <button onClick={this.handleIncreaseScore}>Increase</button>
+                <button onClick={this.handleResetScore}>Reset</button>
+            </div>
+        )
+    }
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
