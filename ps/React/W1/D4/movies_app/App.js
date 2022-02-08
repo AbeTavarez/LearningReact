@@ -30,7 +30,7 @@ class App  extends React.Component {
     render() {
        
         return(
-           <div>
+           <div className='container'>
              <h1>Movie App</h1>
 
              <form onSubmit={this.handleSubmit}>

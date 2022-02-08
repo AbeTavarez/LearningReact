@@ -63,13 +63,14 @@ class App extends React.Component {
           </fieldset>
         </form>
 
-        {/* <fieldset>
+        <fieldset>
             <h2>Preview our new item</h2>
             <h3>{this.state.name}</h3>
             <h4>{this.state.price}</h4>
             <h5>{this.state.description}</h5>
-        </fieldset> */}
+        </fieldset>
 
+        <h2>Products</h2>
         <ul>
           {this.state.products.map((product) => (
             // <li>{product.name} - {product.price}</li>
@@ -85,11 +86,11 @@ class App extends React.Component {
 
 // Create a new component to render each product inside App component
 class ProductList extends React.Component {
-  state = {
-    inShoppingCart: false
-  }
+  // state = {
+  //   inShoppingCart: false
+  // }
 
-  toggleCart = () => this.setState({inShoppingCart: !this.state.inShoppingCart});
+  // toggleCart = () => this.setState({inShoppingCart: !this.state.inShoppingCart});
 
   render() {
     // we user arrow function here bc we're padding an argument to the function

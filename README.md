@@ -187,6 +187,7 @@ class Useritem extends Component {
     };
   }
   render()....
+}
 `
 
 ### Components Lifecycle Methods

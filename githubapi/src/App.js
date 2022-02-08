@@ -37,16 +37,16 @@ const App = () => {
   // }
 
   // Search users
-  const searchUsers = async (searchText) => {
-    console.log(searchText);
-    setLoading(true);
-    const res = await axios.get(
-      `https://api.github.com/search/users?q=${searchText}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-    );
-    console.log(res.data.items);
-    setUsers(res.data.items) 
-    setLoading(false);
-  };
+  // const searchUsers = async (searchText) => {
+  //   console.log(searchText);
+  //   setLoading(true);
+  //   const res = await axios.get(
+  //     `https://api.github.com/search/users?q=${searchText}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+  //   );
+  //   console.log(res.data.items);
+  //   setUsers(res.data.items) 
+  //   setLoading(false);
+  // };
 
   // Search single user
   const getUser = async (username) => {
@@ -94,7 +94,7 @@ const App = () => {
                 render={(props) => (
                   <>
                     <Search
-                      searchUsers={searchUsers}
+                      // searchUsers={searchUsers}
                       clearUsers={clearUsers}
                       showClear={ users.length > 0 ? true : false }
                       setAlert={showAlert}

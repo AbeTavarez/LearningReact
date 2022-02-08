@@ -61,3 +61,7 @@
 15. Now let's pass the movie data from our state to the MovieInfo component as a prop.
 
 16. Last Step! Let's wrap our MovieInfo component into a ternary expression and render the MovieInfo component *if this.state.movie else render empty string* .
+
+17. Challenger!!! How can we avoid making a request if the user haven't type anything in the input?
+
+18. Bonus: Create a CSS file and style your app.
