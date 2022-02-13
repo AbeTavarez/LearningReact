@@ -1,13 +1,22 @@
 class App extends React.Component {
   state = {
-    question: [],
+    question: null,
   };
+
+  async componentDidMount() {
+    // console.log('mounted')
+    // const res = await fetch("http://jservice.io/api/random");
+    // const data = await res.json();
+    // // console.log(data);
+    // this.setState({ question: data});
+    // console.log(this.state.question);
+  }
 
   handleGetQuestion = async () => {
     const res = await fetch("http://jservice.io/api/random");
     const data = await res.json();
-    // console.log(data);
-    this.setState({ question: [data[0]] });
+    console.log(data);
+    this.setState({ question: data });
     console.log(this.state.question);
   };
 
@@ -16,11 +25,11 @@ class App extends React.Component {
       <div>
         <h1>Welcome To React Jeopardy!</h1>
 
-        <Score question={this.state.question} />
+       {this.state.question &&  <Score question={this.state.question} />}
         <hr />
         <button onClick={this.handleGetQuestion}>Get Question</button>
 
-        <Question question={this.state.question} />
+       {this.state.question &&  <Question question={this.state.question} />}
       </div>
     );
   }
