@@ -19,10 +19,10 @@ const Component3 = () => <h3>Third functional component</h3>
 //! ==================== for props review
 const ParentComponent = () => {
     //! show 2nd
-    let message; // some piece of state
+    let message = ''; // some piece of state
     const setMessage = newMessage => console.log(message = newMessage); // func to set or change the state
 
-    
+
     //!show tile
     return(
         <div>
