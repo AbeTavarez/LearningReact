@@ -16,19 +16,24 @@ const LoginForm = ({setUser}) => {
     axios.post('http://localhost:5000/auth', formData)
     .then(res => {
         console.log(res.data);
-        setUser(res.data.user)
+        if (res.data.token && res.data.user){
+          setUser(res.data.user)
         localStorage.setItem('todosUser', res.data.token);
         history.push('/home')
-    })
+        } else {
+          console.log(res.data)
+        }
+    }).catch(e => console.error(e))
   }
 
   return (
     <>
       <h3>Login</h3>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
+      <form onSubmit={handleSubmit} className='container'>
+        <label htmlFor="email" className="form-label">Email</label>
         <input
           type="text"
+          className="form-control"
           id="email"
           name="email"
           value={formData.email}
@@ -37,9 +42,10 @@ const LoginForm = ({setUser}) => {
           }
         />
 
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password" className="form-label">Password</label>
         <input
           type="password"
+          className="form-control mb-3"
           id="password"
           name="password"
           value={formData.password}
@@ -48,7 +54,7 @@ const LoginForm = ({setUser}) => {
           }
         />
 
-        <input type="submit" />
+        <input type="submit" className="btn btn-primary"/>
       </form>
     </>
   );

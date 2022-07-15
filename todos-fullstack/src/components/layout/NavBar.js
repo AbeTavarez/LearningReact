@@ -1,6 +1,9 @@
 import { NavLink } from "react-router-dom";
-
-const NavBar = ({user}) => {
+import { useContext } from "react";
+import {UserContext} from '../../App'
+const NavBar = (props) => {
+  const {user} = props
+  // const user = useContext(UserContext)
   return (
     <header>
         {user && <h6>Hello, {user.username} </h6>}

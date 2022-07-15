@@ -11,7 +11,7 @@ const Landing = ({ setUser }) => {
       {hasAccount === false ? (
         <div>
           <RegisterForm setUser={setUser} />
-          <p>Already have an account? <button onClick={() => setHasAccount(true)}>Login</button></p>
+          <p>Already have an account? <span className="btn btn-outline-info" onClick={() => setHasAccount(true)}>Login</span></p>
         </div>
       ) : (
         <LoginForm setUser={setUser}/>
