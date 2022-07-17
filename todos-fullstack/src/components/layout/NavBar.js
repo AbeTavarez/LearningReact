@@ -6,14 +6,17 @@ const NavBar = (props) => {
   // const user = useContext(UserContext)
   return (
     <header>
-        {user && <h6>Hello, {user.username} </h6>}
-      <nav>
-        <ul>
-          <li>
-            <NavLink to="/home">Home</NavLink>
+      <nav className="nav navbar-expand-lg navbar-light bg-light">
+       <div className="container-fluid"> {user && <h6>Hello, {user.username} </h6>}</div>
+        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <li className="nav-item">
+            <NavLink to="/home" className='nav-link'>Home</NavLink>
           </li>
-          <li>
-            <NavLink to="/about">About</NavLink>
+          <li className="nav-item">
+            <NavLink to="/about" className='nav-link'>About</NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink to="/landing" className='nav-link'>Landing</NavLink>
           </li>
         </ul>
       </nav>

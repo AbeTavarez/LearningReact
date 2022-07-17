@@ -27,10 +27,10 @@ const RegisterForm = ({ setUser }) => {
   };
 
   return (
-    <div className="container">
+    <div className="container-sm">
       <h3>Register</h3>
       <form onSubmit={handleSubmit} className="">
-        <div className="mb-3">
+        <div className="mb-3 pt-3">
           <label htmlFor="username" className="form-label">
             Name
           </label>
